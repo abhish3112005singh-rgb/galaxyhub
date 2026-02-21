@@ -6,9 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galaxy Tech Hub | Innovation & Design</title>
     <meta name="description" content="Experience the next generation of mobile, home appliances, and digital solutions with Galaxy Tech Hub." />
+    <script>
+      // Global error handler to catch deployment crashes
+      window.onerror = function(msg, url, line, col, error) {
+        console.error("Deployment Error: ", msg, " at ", url, ":", line);
+        var root = document.getElementById('root');
+        if (root && (root.innerHTML.includes('Loading') || root.innerHTML === '')) {
+          root.innerHTML = '<div style="padding: 20px; font-family: sans-serif; color: red;">' +
+            '<h2>Application Error</h2>' +
+            '<p>Something went wrong while loading the app.</p>' +
+            '<pre style="font-size: 12px; background: #eee; padding: 10px;">' + msg + '</pre>' +
+            '</div>';
+        }
+      };
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div style="font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; color: #666;">
+        Loading Galaxy Tech Hub...
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
