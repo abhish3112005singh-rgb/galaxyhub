@@ -11,6 +11,9 @@ if (!rootElement) {
 
 try {
   console.log('App initializing...');
+  const statusText = document.getElementById('status-text');
+  if (statusText) statusText.innerText = 'Mounting application...';
+  
   createRoot(rootElement).render(
     <StrictMode>
       <App />

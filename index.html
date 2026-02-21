@@ -22,8 +22,19 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <div id="root">
+      <div style="font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; color: #333; background: #f9f9f9;">
+        <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Galaxy Tech Hub</div>
+        <div id="status-text" style="color: #666;">Initializing application...</div>
+      </div>
+    </div>
+    <script>
+      console.log("HTML loaded, waiting for main script...");
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log("DOM fully loaded and parsed");
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
 
