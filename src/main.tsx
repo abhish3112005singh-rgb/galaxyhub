@@ -11,15 +11,13 @@ if (!rootElement) {
 
 try {
   console.log('App initializing...');
-  const statusText = document.getElementById('status-text');
-  if (statusText) statusText.innerText = 'Mounting application...';
-  
-  createRoot(rootElement).render(
+  const root = createRoot(rootElement);
+  root.render(
     <StrictMode>
       <App />
     </StrictMode>,
   );
-  console.log('App rendered successfully');
+  console.log('App render call completed');
 } catch (error) {
   console.error('App render error:', error);
   rootElement.innerHTML = `

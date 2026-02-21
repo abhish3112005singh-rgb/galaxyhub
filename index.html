@@ -29,12 +29,25 @@
       </div>
     </div>
     <script>
-      console.log("HTML loaded, waiting for main script...");
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log("DOM fully loaded and parsed");
+      console.log("Current URL:", window.location.href);
+      console.log("Current Origin:", window.location.origin);
+      console.log("Current Pathname:", window.location.pathname);
+      
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var status = document.getElementById('status-text');
+          if (status && status.innerText === 'Initializing application...') {
+            console.error("App failed to initialize. Check if the JS bundle loaded correctly in the Network tab.");
+            status.innerHTML = '<div style="color: red; text-align: center;">' +
+              '<h3>Application failed to load</h3>' +
+              '<p>Please check the browser console (F12) for errors.</p>' +
+              '<p style="font-size: 12px; color: #999;">Path: ' + window.location.pathname + '</p>' +
+              '</div>';
+          }
+        }, 5000);
       });
     </script>
-    <script type="module" src="src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
 
